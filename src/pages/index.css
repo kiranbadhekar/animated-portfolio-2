@@ -1,0 +1,21 @@
+/* index.css */
+
+/* Reset everything globally */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+/* Ensure reset-container children have no spacing */
+.reset-container > * {
+  margin-top: 0px !important;
+  padding: 40px !important;
+}
+
