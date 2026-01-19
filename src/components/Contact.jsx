@@ -30,7 +30,6 @@ const ContactContainer = styled.section`
   padding: 4rem 2rem;
   position: relative;
   z-index: 2;
-  /* ❌ background removed */
 `;
 
 const FloatingCard = styled(motion.div)`
@@ -41,7 +40,6 @@ const FloatingCard = styled(motion.div)`
   position: relative;
   overflow: hidden;
 
-  /* 🌊 Ocean glass card */
   background: linear-gradient(
     180deg,
     rgba(10, 40, 70, 0.55) 0%,
@@ -60,27 +58,17 @@ const FloatingCard = styled(motion.div)`
 
   border: 1px solid rgba(120, 220, 255, 0.25);
 
-  /* 🌊 Caustic underwater light */
   &::before {
     content: "";
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(
-        circle at 30% 10%,
-        rgba(120, 220, 255, 0.25),
-        transparent 55%
-      ),
-      radial-gradient(
-        circle at 70% 30%,
-        rgba(0, 180, 255, 0.18),
-        transparent 60%
-      );
+      radial-gradient(circle at 30% 10%, rgba(120, 220, 255, 0.25), transparent 55%),
+      radial-gradient(circle at 70% 30%, rgba(0, 180, 255, 0.18), transparent 60%);
     mix-blend-mode: screen;
     pointer-events: none;
   }
 
-  /* 🌊 Moving water shine */
   &::after {
     content: "";
     position: absolute;
@@ -106,7 +94,7 @@ const FloatingCard = styled(motion.div)`
 `;
 
 const Title = styled.h1`
-  margin-bottom: 1.8rem;
+  margin-bottom: 2rem;
   text-align: center;
   font-size: 2.6rem;
   color: #eafcff;
@@ -115,74 +103,38 @@ const Title = styled.h1`
     0 0 10px rgba(0, 180, 255, 0.4);
 `;
 
-const Form = styled.form`
+const ContactInfo = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 1.4rem;
+  text-align: center;
 `;
 
-const Input = styled.input`
-  padding: 0.9rem 1rem;
-  border-radius: 12px;
-  border: 1px solid rgba(120, 220, 255, 0.15);
-  outline: none;
-  font-size: 0.95rem;
-  color: #ffffff;
+const ContactItem = styled.p`
+  font-size: 1.1rem;
+  color: #eafcff;
 
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.08),
-    rgba(255, 255, 255, 0.02)
-  );
-
-  ::placeholder {
-    color: rgba(200, 240, 255, 0.6);
+  a {
+    margin-left: 8px;
+    color: #6fe8ff;
+    text-decoration: none;
+    font-weight: 500;
   }
 
-  &:focus {
-    border-color: rgba(0, 200, 255, 0.6);
-    box-shadow:
-      0 0 0 3px rgba(0, 200, 255, 0.18),
-      inset 0 0 8px rgba(0, 200, 255, 0.2);
+  a:hover {
+    text-decoration: underline;
   }
 `;
 
-const TextArea = styled.textarea`
-  padding: 0.9rem 1rem;
-  border-radius: 12px;
-  border: 1px solid rgba(120, 220, 255, 0.15);
-  outline: none;
-  resize: none;
-  font-size: 0.95rem;
-  color: #ffffff;
-
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.08),
-    rgba(255, 255, 255, 0.02)
-  );
-
-  ::placeholder {
-    color: rgba(200, 240, 255, 0.6);
-  }
-
-  &:focus {
-    border-color: rgba(0, 200, 255, 0.6);
-    box-shadow:
-      0 0 0 3px rgba(0, 200, 255, 0.18),
-      inset 0 0 8px rgba(0, 200, 255, 0.2);
-  }
-`;
-
-const Button = styled(motion.button)`
-  margin-top: 0.8rem;
+const ContactButton = styled(motion.a)`
+  margin-top: 1.5rem;
   padding: 0.95rem;
   border-radius: 14px;
-  border: none;
-  cursor: pointer;
+  text-align: center;
   font-weight: 600;
   font-size: 1rem;
   color: #ffffff;
+  text-decoration: none;
 
   background: linear-gradient(135deg, #00b4db, #0083b0);
 
@@ -207,15 +159,30 @@ const Contact = () => {
       >
         <Title>Contact Me</Title>
 
-        <Form>
-          <Input type="text" placeholder="Your Name" required />
-          <Input type="email" placeholder="Your Email" required />
-          <TextArea rows="5" placeholder="Your Message" required />
+        <ContactInfo>
+          <ContactItem>
+            📧 Email:
+            <a href="mailto:kiranbadhekar8@gmail.com">
+              kiranbadhekar8@gmail.com
+            </a>
+          </ContactItem>
 
-          <Button whileHover={{ scale: 1.06 }} whileTap={{ scale: 0.95 }}>
-            Send Message
-          </Button>
-        </Form>
+          <ContactItem>
+            📞 Phone:
+            <a href="tel:+918446050780">
+              +91 8446050780
+            </a>
+          </ContactItem>
+
+          <ContactButton
+            href="https://wa.me/918446050780"
+            target="_blank"
+            whileHover={{ scale: 1.06 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            💬 Chat on WhatsApp
+          </ContactButton>
+        </ContactInfo>
       </FloatingCard>
     </ContactContainer>
   );
